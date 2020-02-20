@@ -11,11 +11,13 @@
             >Contact</a
           >
           <a mat-button (click)="installByUser()" *ngIf="installEvent">Install App</a>
+
         </nav>
         <a routerLink="/order" mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn">
           <mat-icon>shopping_cart</mat-icon>
           Carrito
         </a>
+        
       </div>
     </div>
   </mat-toolbar-row>

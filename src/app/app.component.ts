@@ -12,44 +12,9 @@ interface Token {
   template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-
-  private tokensCollections: AngularFirestoreCollection<Token>;
+export class AppComponent {
 
   constructor(
     private swUpdate: SwUpdate,
-    private messaging: AngularFireMessaging,
-    private database: AngularFirestore
-  ) {
-    this.tokensCollections = this.database.collection<Token>('tokens');
-  }
-
-  ngOnInit() {
-    this.updatePWA();
-    this.requestPermission();
-    this.listenNotifications();
-  }
-
-  updatePWA() {
-    this.swUpdate.available
-    .subscribe(value => {
-      console.log('update:', value);
-      window.location.reload();
-    });
-  }
-
-  requestPermission() {
-    this.messaging.requestToken
-    .subscribe(token => {
-      console.log(token);
-      this.tokensCollections.add({token});
-    });
-  }
-
-  listenNotifications() {
-    this.messaging.messages
-    .subscribe(message => {
-      console.log(message);
-    });
-  }
+  ) {};
 }

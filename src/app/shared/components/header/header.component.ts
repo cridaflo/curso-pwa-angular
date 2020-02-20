@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
-  onBeforeInstallPrompt(event: Event) {
+  onBeforeInstallPrompt(event: Event){
     console.log(event);
     event.preventDefault();
     this.installEvent = event;
@@ -36,12 +36,13 @@ export class HeaderComponent implements OnInit {
 
   installByUser() {
     if (this.installEvent) {
-      this.installEvent.prompt();
-      this.installEvent.userChoice
-      .then(rta => {
+      this.installEvent.promt();
+      this.installEvent.userChoice()
+      .then(rta =>{
         console.log(rta);
-      });
+      }); 
     }
   }
+  
 
 }
